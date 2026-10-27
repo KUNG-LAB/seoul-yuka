@@ -20,7 +20,7 @@
      사이트 맨 위 robots.txt(apps/seoul_yuka/robots.txt)와 함께 쓴다. POLICY_PAGES.md '자동 수집 금지' -->
 <meta name="robots" content="noai, noimageai">
 <title>서울육아 — 서울 육아 정보를 한 화면에</title>
-<meta name="description" content="서울시 육아 지원 제도, 달빛어린이병원, 서울형 키즈카페, 교육·체험 문화행사와 육아 브랜드 행사를 한 화면에서 확인하는 안드로이드 앱입니다. 회원가입이 없습니다.">
+<meta name="description" content="서울시 육아 지원 제도, 달빛어린이병원, 서울형 키즈카페, 교육·체험 문화행사와 육아 브랜드 행사를 한 화면에서 확인하는 앱입니다. Android · iPhone · 앱인토스에서 쓸 수 있고 회원가입이 없습니다.">
 <style>
   :root {
     color-scheme: light dark;
@@ -53,6 +53,16 @@
     background: var(--card); border: 1px solid var(--line);
     font-size: 0.82rem; color: var(--muted);
   }
+  /* 앱 받기 버튼 — 도입 경위는 header 안 .download의 주석. 넓으면 한 줄에 셋, 휴대폰 폭에서는 한 줄에 하나씩 쌓인다. */
+  .download { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+  .download a {
+    flex: 1 1 200px; padding: 11px 16px; border-radius: 10px; line-height: 1.4;
+    background: var(--card); border: 1px solid var(--accent); color: var(--fg); text-decoration: none;
+  }
+  .download a:hover, .download a:focus-visible { background: var(--accent); color: var(--bg); }
+  .download small { display: block; font-size: 0.8rem; color: var(--muted); }
+  .download a:hover small, .download a:focus-visible small { color: inherit; }
+  .download strong { font-size: 1.05rem; }
   h2 {
     font-size: 1.12rem; margin: 40px 0 14px; padding-left: 11px;
     border-left: 3px solid var(--accent);
@@ -91,8 +101,18 @@
   <header>
     <h1>서울육아</h1>
     <p class="lead">서울에서 아이를 키우는 데 필요한 정보 — 지원 제도, 야간 소아진료, 서울형 키즈카페,
-    교육·체험 문화행사와 육아 브랜드 행사 — 를 한 화면에서 확인하는 안드로이드 앱입니다.</p>
-    <span class="badge">Android 앱 · 회원가입 없음</span>
+    교육·체험 문화행사와 육아 브랜드 행사 — 를 한 화면에서 확인하는 앱입니다.</p>
+    <span class="badge">Android · iPhone · 앱인토스 · 회원가입 없음</span>
+    <!-- 앱 받기 — 2026-10-28 사용자: 인스타 광고의 이동 주소 · 인스타 · 유튜브 프로필 링크로 쓴다(md_files/seoul_yuka/INSTAGRAM_PROMO.md '광고 판 (10-27)').
+         광고로 들어온 사람이 휴대폰 첫 화면에서 바로 보도록 머리 부분에 둔다. 공식 배지 그림 대신 이 페이지 색의 글자 버튼(사용자 결정 10-28).
+         'Google Play' · 'App Store'는 번역하지 않는다(각 사 지침). iOS 앱은 iPhone 전용이라 'iPhone'(ios TARGETED_DEVICE_FAMILY = 1).
+         앱인토스는 사용자가 토스 앱의 공유 버튼으로 받은 공유 링크다(10-28 — 콘솔에는 공유 링크 화면이 없다). 토스 앱이 없으면 토스의 미니앱 소개 화면이 열린다.
+         버튼 · 주소를 바꾸면 휴대폰 종류별로 스토어로 보내는 app.html도 같이 고친다. -->
+    <div class="download" id="download">
+      <a href="https://play.google.com/store/apps/details?id=kr.moamoa.news"><small>Android에서 받기</small><strong>Google Play</strong></a>
+      <a href="https://apps.apple.com/kr/app/id6820169217"><small>iPhone에서 받기</small><strong>App Store</strong></a>
+      <a href="https://tossminiapp.com/s/d9cB72w3"><small>토스 앱에서 열기</small><strong>앱인토스</strong></a>
+    </div>
   </header>
 
   <!-- 개정 공지 (2026-10-12 작성 — 방침 제13조 · 약관 제3조 3항의 7일 전 공지 · 사용자 결정 10-12: 시행 2026-10-20).
@@ -407,7 +427,7 @@
 
   <h2>기술 개요</h2>
   <ul>
-    <li>앱: Android (Flutter)</li>
+    <li>앱: Android · iOS (Flutter) · 앱인토스(토스 미니앱, Flutter Web)</li>
     <li>수집: Python으로 <strong>정해진 시각에만</strong> 공공데이터와 공개된 페이지를 조회</li>
     <li>앱은 정리된 결과 파일만 내려받아 표시합니다. 앱이 공공데이터를 직접 호출하지 않으므로,
         사용자가 늘어도 <strong>기관에 가는 요청은 늘지 않습니다.</strong></li>
